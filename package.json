@@ -22,5 +22,9 @@
 	},
 	"keywords": ["cli", "linux", "appimage", "desktop", "utility"],
 	"author": "Amir Momenian <nainemom@gmail.com>",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"@clack/prompts": "^0.10.1",
+		"std-env": "^3.9.0"
+	}
 }
