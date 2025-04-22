@@ -1,28 +1,26 @@
 {
-  "name": "appimage-sync",
-  "version": "0.0.0",
-  "description": "Create .desktop launchers for .AppImage apps.",
+	"name": "appimage-sync",
+	"version": "0.0.0",
+	"description": "Create .desktop launchers for .AppImage apps.",
 	"type": "module",
 	"main": "dist/index.js",
 	"bin": {
 		"appimage-sync": "dist/index.js"
 	},
-  "devDependencies": {
-    "@types/node": "^22.14.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.3"
-  },
-  "scripts": {
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.14.1",
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3"
+	},
+	"scripts": {
 		"build": "npx tsup src/index.ts --format cjs",
-		"dev": "npx tsup src/index.ts --watch"
-  },
-  "keywords": [
-    "cli",
-    "linux",
-    "appimage",
-    "desktop",
-    "utility"
-  ],
-  "author": "Amir Momenian <nainemom@gmail.com>",
-  "license": "MIT"
+		"dev": "npx tsup src/index.ts --watch",
+		"lint": "npx @biomejs/biome check .",
+		"lint:ci": "npx @biomejs/biome ci .",
+		"lint:fix": "npx @biomejs/biome check --fix --unsafe ."
+	},
+	"keywords": ["cli", "linux", "appimage", "desktop", "utility"],
+	"author": "Amir Momenian <nainemom@gmail.com>",
+	"license": "MIT"
 }

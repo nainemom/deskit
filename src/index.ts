@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import process from "process";
+import process from 'node:process';
 
 console.log(process.features);
