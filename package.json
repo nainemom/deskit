@@ -2,11 +2,19 @@
   "name": "appimage-sync",
   "version": "0.0.0",
   "description": "Create .desktop launchers for .AppImage apps.",
-  "main": "dist/index.js",
-  "dependencies": {},
-  "devDependencies": {},
+	"type": "module",
+	"main": "dist/index.js",
+	"bin": {
+		"appimage-sync": "dist/index.js"
+	},
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"build": "npx tsup src/index.ts --format cjs",
+		"dev": "npx tsup src/index.ts --watch"
   },
   "keywords": [
     "cli",
