@@ -1,0 +1,20 @@
+{
+  "name": "appimage-sync",
+  "version": "0.0.0",
+  "description": "Create .desktop launchers for .AppImage apps.",
+  "main": "dist/index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "linux",
+    "appimage",
+    "desktop",
+    "utility"
+  ],
+  "author": "Amir Momenian <nainemom@gmail.com>",
+  "license": "MIT"
+}
