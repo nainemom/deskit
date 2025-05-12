@@ -38,23 +38,18 @@ export const checksum = async (input: string | URL) => {
 
 export const installedApps = () =>
   Promise.resolve(
-    readdirSync(STATIC_DIR).map((appId) => {
-      const name = (() => {
-        try {
-          const desktopFileContent = readFileSync(
-            resolve(SHORTCUTS_DIR, `${appId}.desktop`),
-            {
-              encoding: "utf-8",
-            }
-          );
-          const match = desktopFileContent.match(/^Name=(.+)$/m);
-          return match ? match[1] : "Unknown";
-        } catch {
-          return "Unknown";
+    readdirSync(STATIC_DIR).map((id) => {
+      const desktopFileContent = readFileSync(
+        resolve(SHORTCUTS_DIR, `${id}.desktop`),
+        {
+          encoding: "utf-8",
         }
-      })();
+      );
 
-      return `${name}: ${appId}`;
+      const name = desktopFileContent.match(/^Name=(.+)$/m)?.[1] || 'unknown';
+      const version = desktopFileContent.match(/^X-Version=(.+)$/m)?.[1] || 'unknown';
+      const type = desktopFileContent.match(/^X-Type=(.+)$/m)?.[1] || 'unknown';
+      return { name, version: version.toLowerCase() === 'latest' ? 'latest' : `v${version}`, id, type };
     })
   );
 
