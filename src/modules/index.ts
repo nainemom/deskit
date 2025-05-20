@@ -1,5 +1,7 @@
-import { appimage } from "./appimage";
+import { appimage } from './appimage';
+import { webapp } from './webapp';
 
 export const installers = {
-  appimage,
+	appimage,
+	webapp,
 };
