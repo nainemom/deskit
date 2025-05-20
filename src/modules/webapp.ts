@@ -93,6 +93,8 @@ export const webapp = async (webappUrl: URL) => {
 			`X-Version=${version}`,
 			'X-Type=WebApp',
 			`Exec=${appPath}`,
+			'Terminal=false',
+			'Type=Application',
 		];
 
 		return ret.join('\n');
