@@ -1,6 +1,6 @@
 {
 	"name": "deskit",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Create .desktop launchers for AppImages and Web Apps.",
 	"type": "module",
 	"main": "dist/index.js",
