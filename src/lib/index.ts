@@ -4,6 +4,7 @@ import {
 	readFileSync,
 	readdirSync,
 	rmSync,
+	rmdirSync,
 	statSync,
 } from 'node:fs';
 import { join, resolve } from 'node:path';
@@ -67,19 +68,23 @@ export const installedApps = () => {
 };
 
 export const uninstall = (appId: string) => {
-	rmSync(resolve(SHORTCUTS_DIR, `${appId}.desktop`), {
-		force: true,
-	});
-	rmSync(resolve(STATIC_DIR, appId), {
-		force: true,
-	});
-	rmSync(resolve(ICONS_DIR, appId), {
-		force: true,
-	});
-	rmSync(resolve(HOME, `.local/share/ice/profiles/${appId}`), {
-		force: true,
-	});
-	return Promise.resolve();
+	try {
+		rmSync(resolve(SHORTCUTS_DIR, `${appId}.desktop`), {
+			force: true,
+		});
+		rmSync(resolve(STATIC_DIR, appId), {
+			force: true,
+		});
+		rmSync(resolve(ICONS_DIR, appId), {
+			force: true,
+		});
+		rmdirSync(resolve(HOME, `.local/share/ice/profiles/${appId}`), {
+			recursive: true,
+		});
+		return Promise.resolve();
+	} catch (_e) {
+		return Promise.resolve();
+	}
 };
 
 export const resolveInputAsPath = (input: string) => {
