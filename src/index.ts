@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { exit, stderr, stdout } from 'node:process';
 import { cac } from 'cac';
 import { oraPromise } from 'ora';
@@ -58,6 +60,9 @@ cli
 		await oraPromise(uninstall(input));
 	});
 
-cli.version('0.0.0');
+const version = JSON.parse(
+	readFileSync(resolve(__dirname, '../package.json'), { encoding: 'utf-8' }),
+).version as string;
+cli.version(version);
 cli.help();
 cli.parse();

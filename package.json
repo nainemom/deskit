@@ -21,14 +21,7 @@
 		"lint:ci": "npx @biomejs/biome ci .",
 		"lint:fix": "npx @biomejs/biome check --fix --unsafe ."
 	},
-	"keywords": [
-		"cli",
-		"linux",
-		"appimage",
-		"webapp",
-		"desktop",
-		"utility"
-	],
+	"keywords": ["cli", "linux", "appimage", "webapp", "desktop", "utility"],
 	"author": "Amir Momenian <nainemom@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
