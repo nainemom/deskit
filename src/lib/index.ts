@@ -36,28 +36,35 @@ export const checksum = async (input: string | URL) => {
 	return hash.digest('hex');
 };
 
-export const installedApps = () =>
-	Promise.resolve(
-		readdirSync(STATIC_DIR).map((id) => {
-			const desktopFileContent = readFileSync(
-				resolve(SHORTCUTS_DIR, `${id}.desktop`),
-				{
-					encoding: 'utf-8',
-				},
-			);
+export const installedApps = () => {
+	try {
+		return Promise.resolve(
+			readdirSync(STATIC_DIR).map((id) => {
+				const desktopFileContent = readFileSync(
+					resolve(SHORTCUTS_DIR, `${id}.desktop`),
+					{
+						encoding: 'utf-8',
+					},
+				);
 
-			const name = desktopFileContent.match(/^Name=(.+)$/m)?.[1] || 'unknown';
-			const version =
-				desktopFileContent.match(/^X-Version=(.+)$/m)?.[1] || 'unknown';
-			const type = desktopFileContent.match(/^X-Type=(.+)$/m)?.[1] || 'unknown';
-			return {
-				name,
-				version: version.toLowerCase() === 'latest' ? 'latest' : `v${version}`,
-				id,
-				type,
-			};
-		}),
-	);
+				const name = desktopFileContent.match(/^Name=(.+)$/m)?.[1] || 'unknown';
+				const version =
+					desktopFileContent.match(/^X-Version=(.+)$/m)?.[1] || 'unknown';
+				const type =
+					desktopFileContent.match(/^X-Type=(.+)$/m)?.[1] || 'unknown';
+				return {
+					name,
+					version:
+						version.toLowerCase() === 'latest' ? 'latest' : `v${version}`,
+					id,
+					type,
+				};
+			}),
+		);
+	} catch (_e) {
+		return Promise.resolve([]);
+	}
+};
 
 export const uninstall = (appId: string) => {
 	rmSync(resolve(SHORTCUTS_DIR, `${appId}.desktop`), {
