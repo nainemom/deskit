@@ -5,7 +5,7 @@
 	"type": "module",
 	"main": "dist/index.js",
 	"bin": {
-		"deskit": "dist/index.js"
+		"deskit": "dist/index.cjs"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
