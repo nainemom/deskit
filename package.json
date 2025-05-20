@@ -1,6 +1,6 @@
 {
 	"name": "deskit",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Create .desktop launchers for AppImages and Web Apps.",
 	"type": "module",
 	"main": "dist/index.js",
@@ -21,7 +21,14 @@
 		"lint:ci": "npx @biomejs/biome ci .",
 		"lint:fix": "npx @biomejs/biome check --fix --unsafe ."
 	},
-	"keywords": ["cli", "linux", "appimage", "webapp", "desktop", "utility"],
+	"keywords": [
+		"cli",
+		"linux",
+		"appimage",
+		"webapp",
+		"desktop",
+		"utility"
+	],
 	"author": "Amir Momenian <nainemom@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
